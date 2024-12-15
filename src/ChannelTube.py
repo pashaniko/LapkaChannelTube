@@ -363,7 +363,6 @@ class DataHandler:
                     selected_ext = "mp4"
                     # selected_format = f"{self.video_format_id}+{self.audio_format_id}/bestvideo+bestaudio[acodec=aac]/bestvideo+bestaudio/best"
                     selected_format = f"bestvideo[vcodec^=avc]+bestaudio[ext=m4a]/best[ext=mp4]/best"
-                    bestvideo[vcodec^=avc]+bestaudio[ext=m4a]/best[ext=mp4]/best
                     merge_output_format = selected_ext
                 else:
                     selected_ext = "m4a"
