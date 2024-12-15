@@ -394,7 +394,7 @@ class DataHandler:
                     "writethumbnail": True,
                     "progress_hooks": [self.progress_callback],
                     "postprocessors": post_processors,
-                    "no_mtime": True,
+                    # "no_mtime": True,
                     "live_from_start": True,
                     "extractor_args": {"youtubetab": {"skip": ["authcheck"]}},
                 }
