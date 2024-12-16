@@ -385,17 +385,15 @@ class DataHandler:
 
                 folder_and_filename = os.path.join(channel_folder_path, cleaned_title)
                 ydl_opts = {
-                    "title": f"%(upload_date)s_{cleaned_title}",
                     "paths": {"home": channel_folder_path, "temp": temp_dir.name},
                     "logger": self.general_logger,
                     "ffmpeg_location": "/usr/bin/ffmpeg",
                     "format": selected_format,
-                    "outtmpl": f"%(upload_date)s_{cleaned_title}.%(ext)s",
+                    "outtmpl": f"{cleaned_title}.%(ext)s",
                     "quiet": True,
                     "writethumbnail": True,
                     "progress_hooks": [self.progress_callback],
                     "postprocessors": post_processors,
-                    #"mtime": True,
                     "no_mtime": True,
                     "live_from_start": True,
                     "extractor_args": {"youtubetab": {"skip": ["authcheck"]}},
