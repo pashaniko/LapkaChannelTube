@@ -375,12 +375,16 @@ class DataHandler:
                             "preferredquality": 0,
                         }
                     )
-
-                post_processors.extend(
+                post_processors.extend( 
                     [
-                        {"key": "FFmpegMetadata"},
-                        {"key": "EmbedThumbnail"},
+                        { 'key': 'FFmpegMetadata', 'add_metadata': True, }, 
+                        { 'key': 'EmbedThumbnail', 'already_have_thumbnail': False, }
                     ]
+                # post_processors.extend(
+                #    [
+                #        {"key": "FFmpegMetadata"},
+                #        {"key": "EmbedThumbnail"},
+                #    ]
                 )
 
                 folder_and_filename = os.path.join(channel_folder_path, cleaned_title)
@@ -391,6 +395,7 @@ class DataHandler:
                     "format": selected_format,
                     "outtmpl": f"{cleaned_title}.%(ext)s",
                     "quiet": True,
+                    "writeinfojson": True,
                     "writethumbnail": True,
                     "progress_hooks": [self.progress_callback],
                     "postprocessors": post_processors,
