@@ -352,7 +352,7 @@ class DataHandler:
             try:
                 temp_dir = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
                 link = item["link"]
-                cleaned_title = self.string_cleaner(item["title"])
+                cleaned_title = self.string_cleaner(item["title"]) + " [" + item["id"] + "]"
                 selected_media_type = channel["Media_Type"]
                 post_processors = [
                     {"key": "SponsorBlock", "categories": ["sponsor"]},
@@ -393,8 +393,8 @@ class DataHandler:
                     "logger": self.general_logger,
                     "ffmpeg_location": "/usr/bin/ffmpeg",
                     "format": selected_format,
-                    # "outtmpl": f"{cleaned_title}.%(ext)s",
-                    "outtmpl": f"{cleaned_title}[%(id)s].%(ext)s",
+                    "outtmpl": f"{cleaned_title}.%(ext)s",
+                    # "outtmpl": f"{cleaned_title}[%(id)s].%(ext)s",
                     "quiet": True,
                     "writeinfojson": True,
                     "writethumbnail": True,
